@@ -1,10 +1,10 @@
 package entities;
 
 import lombok.Data;
+import org.hibernate.mapping.Set;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 @Entity
 @Data
@@ -46,6 +46,6 @@ public class Aluno implements Serializable {
     @Column(name="Linguagem_principal", nullable = false)
     private String linguagemPrincipal;
 
-    @OneToMany(mappedBy = "Cursos")
-    Set<Cursos> cursos;
+    //@OneToMany(mappedBy = "Cursos")
+    //Set<Cursos> cursos;
 }
