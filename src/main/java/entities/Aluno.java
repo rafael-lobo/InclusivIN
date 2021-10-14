@@ -5,6 +5,8 @@ import org.hibernate.mapping.Set;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -13,7 +15,7 @@ import java.io.Serializable;
 public class Aluno implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ID", nullable = false)
+    @Column(name="Id_aluno", nullable = false)
     private Long idAluno;
 
     @Column(name="Nome", nullable = false)
@@ -22,7 +24,7 @@ public class Aluno implements Serializable {
     @Column(name="CPF", unique = true ,nullable = false)
     private String cpf;
 
-    @Column(name="E-mail", nullable = false)
+    @Column(name="Email", nullable = false)
     private String email;
 
     @Column(name="Telefone", nullable = false)
@@ -40,7 +42,7 @@ public class Aluno implements Serializable {
     @Column(name="Numero_do_endereco", nullable = false)
     private String enderecoNumero;
 
-    @Column(name="Deficiência", nullable = false)
+    @Column(name="Deficiencia", nullable = false)
     private String deficiencia;
 
     @Column(name="Linguagem_principal", nullable = false)
@@ -48,4 +50,13 @@ public class Aluno implements Serializable {
 
     //@OneToMany(mappedBy = "Cursos")
     //Set<Cursos> cursos;
+
+    @ManyToMany
+    @JoinTable(name = "alunos_cursos",
+            joinColumns = { @JoinColumn(name = "fk_alunos") },
+            inverseJoinColumns = { @JoinColumn(name = "fk_cursos") })
+    private List<Cursos> cursos = new ArrayList<Cursos>();
+
+    @OneToOne(mappedBy = "aluno")
+    private Experiencias experiencias;
 }

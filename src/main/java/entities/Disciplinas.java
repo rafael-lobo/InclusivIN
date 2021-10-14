@@ -4,6 +4,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -14,15 +16,20 @@ public class Disciplinas implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name="ID da disciplina", nullable = false)
+    @Column(name="ID_da_disciplina", nullable = false)
     private Long idDisciplina;
 
-    @Column(name="Nome da disciplina", nullable = false)
+    @Column(name="Nome_da_disciplina", nullable = false)
     private String nomeDisciplina;
 
-    @Column(name="Carga horária", nullable = false)
+    @Column(name="Carga_horária", nullable = false)
     private int cargaHoraria;
 
-    @ManyToMany(mappedBy = "Cursos")
-    Set<Cursos> cursos;
+    /*
+    ManyToMany(mappedBy="authors")
+    private List<Book> books = new ArrayList<Book>();
+     */
+
+    @ManyToMany(mappedBy = "disciplinas")
+    private List<Cursos> cursos = new ArrayList<Cursos>();
 }
