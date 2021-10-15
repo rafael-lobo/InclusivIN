@@ -1,4 +1,4 @@
-package DAO;
+package dao;
 
 import entities.Cursos;
 import org.springframework.data.jpa.repository.JpaRepository;
