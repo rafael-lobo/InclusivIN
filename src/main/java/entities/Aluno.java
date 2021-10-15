@@ -57,6 +57,6 @@ public class Aluno implements Serializable {
             inverseJoinColumns = { @JoinColumn(name = "fk_cursos") })
     private List<Cursos> cursos = new ArrayList<Cursos>();
 
-    @OneToOne(mappedBy = "aluno")
+    @OneToMany(mappedBy = "aluno")
     private Experiencias experiencias;
 }

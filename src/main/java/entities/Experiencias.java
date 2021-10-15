@@ -25,7 +25,7 @@ public class Experiencias implements Serializable {
     @Column(name="Resumo_experiencia", nullable = false)
     private String ResumoExperiencia;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="Id_do_Aluno", referencedColumnName = "id")
     private Aluno aluno;
 

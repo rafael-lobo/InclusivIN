@@ -42,6 +42,7 @@ public class Cursos implements Serializable {
             inverseJoinColumns = { @JoinColumn(name = "fk_author") })
     private List<Author> authors = new ArrayList<Author>();
      */
+
     @ManyToMany
     @JoinTable(name = "cursos_disciplinas",
             joinColumns = { @JoinColumn(name = "fk_cursos") },
